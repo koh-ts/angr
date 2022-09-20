@@ -182,7 +182,7 @@ class Clinic(Analysis):
 
         # Simplify the entire function for the first time
         self._update_progress(45., text="Simplifying function 1")
-        self._simplify_function(ail_graph, remove_dead_memdefs=False, unify_variables=False)
+        self._simplify_function(ail_graph, remove_dead_memdefs=False, unify_variables=False, narrow_expressions=True)
 
         # Run simplification passes again. there might be more chances for peephole optimizations after function-level
         # simplification
@@ -231,11 +231,11 @@ class Clinic(Analysis):
         variable_kb = self._recover_and_link_variables(ail_graph, arg_list)
 
         # Make function prototype
-        self._update_progress(85., text="Making function prototype")
+        self._update_progress(90., text="Making function prototype")
         self._make_function_prototype(arg_list, variable_kb)
 
         # Run simplification passes
-        self._update_progress(90., text="Running simplifications 3")
+        self._update_progress(95., text="Running simplifications 3")
         ail_graph = self._run_simplification_passes(ail_graph, stage=OptimizationPassStage.AFTER_VARIABLE_RECOVERY,
                                                     variable_kb=variable_kb)
 
@@ -1013,6 +1013,5 @@ class Clinic(Analysis):
                     return op1, op0
                 return op0, op1  # best-effort guess
         return None, None
-
 
 register_analysis(Clinic, 'Clinic')
