@@ -4,9 +4,6 @@ import networkx
 
 import ailment
 
-from .structurer_nodes import MultiNode, BaseNode, CodeNode, SequenceNode, ConditionNode, SwitchCaseNode, \
-    CascadingConditionNode
-
 
 def remove_last_statement(node):
     stmt = None
@@ -266,3 +263,8 @@ def to_ail_supergraph(transition_graph: networkx.DiGraph) -> networkx.DiGraph:
             break
 
     return transition_graph
+
+
+# delayed import
+from .structuring.structurer_nodes import MultiNode, BaseNode, CodeNode, SequenceNode, ConditionNode, SwitchCaseNode, \
+    CascadingConditionNode
