@@ -16,8 +16,8 @@ from .const_derefs import ConstantDereferencesSimplifier
 from .register_save_area_simplifier import RegisterSaveAreaSimplifier
 from .ret_addr_save_simplifier import RetAddrSaveSimplifier
 from .x86_gcc_getpc_simplifier import X86GccGetPcSimplifier
-from .block_merger import BlockMerger
-from .call_arg_simplifier import CallArgSimplifier
+from .duplication_reverter import DuplicationOptReverter
+from .const_prop_reverter import ConstPropOptReverter
 
 
 _all_optimization_passes = [
@@ -32,8 +32,8 @@ _all_optimization_passes = [
     (X86GccGetPcSimplifier, True),
     (ITEExprConverter, True),
     (ExprOpSwapper, True),
-    (CallArgSimplifier, True),
-    (BlockMerger, True),
+    (ConstPropOptReverter, True),
+    (DuplicationOptReverter, True),
     (EagerReturnsSimplifier, False),
 ]
 
