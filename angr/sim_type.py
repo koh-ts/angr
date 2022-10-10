@@ -1,4 +1,4 @@
-# pylint:disable=abstract-method
+# pylint:disable=abstract-method,line-too-long
 from collections import OrderedDict, defaultdict, ChainMap
 
 from archinfo import Endness
@@ -232,7 +232,6 @@ class SimTypeBottom(SimType):
             return 'void'
         else:
             return f'{"void" if self.label is None else self.label} {name}'
-
 
     def _init_str(self):
         return "%s(%s)" % (
