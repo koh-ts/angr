@@ -560,6 +560,14 @@ class SimSolver(SimStatePlugin):
         return self._solver.min(e, extra_constraints=self._adjust_constraint_list(extra_constraints), exact=exact,
                                 signed=signed)
 
+    @concrete_path_scalar
+    @timed_function
+    @ast_stripping_decorator
+    @error_converter
+    def constraints_z3(self, e, extra_constraints=(), exact=None, signed=False):
+        return self._solver.constraints_z3(e, extra_constraints=self._adjust_constraint_list(extra_constraints), exact=exact,
+                                signed=signed)
+
     @timed_function
     @ast_stripping_decorator
     @error_converter
